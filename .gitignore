@@ -6,3 +6,6 @@ crash.log
 
 # For built boxes
 *.box
+
+
+unifi-controller/ansible/inventory.ini
