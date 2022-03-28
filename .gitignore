@@ -12,3 +12,6 @@ unifi-controller/ansible/hosts
 
 # secrets file for packer templates
 **/secrets.pkr.hcl
+
+# ansible inventory
+ansible/inventory.ini
