@@ -11,7 +11,7 @@ crash.log
 unifi-controller/ansible/hosts
 
 # secrets file for packer templates
-**/secrets.pkr.hcl
+**/secrets.auto.pkrvars.hcl
 
 # ansible inventory
 ansible/inventory.ini
