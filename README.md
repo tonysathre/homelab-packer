@@ -1,5 +1,4 @@
-# homelab
-Automation for my homelab
+# Automation for my homelab
 
 
 ## Packer Templates for VMware vSphere
