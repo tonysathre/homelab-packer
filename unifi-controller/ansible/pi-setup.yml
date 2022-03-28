@@ -1,0 +1,27 @@
+- hosts: all
+  become: yes
+  vars:
+    user:
+      - name: ubuntu
+
+  tasks:
+    - name: ssh key-based authorized login
+      authorized_key: user=ubuntu
+                      exclusive=no
+                      key="{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
+
+
+
+# set password ?
+# enable password-less ssh
+# set hostname
+# set static ip address
+# config dns servers
+# config dns search suffix
+# config domain
+# domain join AD
+# set timezone
+# update all packages
+# install docker
+# copy docker-compose
+# run docker-compose
