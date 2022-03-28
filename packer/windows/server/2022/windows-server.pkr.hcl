@@ -73,7 +73,11 @@ variable "cluster" {
 
 variable "datastore" {
     type = string
-    default = "vsanDatastore"
+}
+
+
+variable iso_path {
+  type = string
 }
 
 variable "disk_size" {
@@ -96,7 +100,7 @@ variable "cpu_cores" {
   default = "2"
 }
 
-variable "vm_name" {
+variable "vm_name_prefix" {
   type    = string
   default = "win-server"
 }
@@ -127,7 +131,7 @@ source "vsphere-iso" "windows-server-2022-standard-core" {
   folder              = var.folder
 
   # Hardware Configuration
-  vm_name              = "${var.vm_name}-${var.os_version}-${var.image_type}"
+  vm_name              = "${var.vm_name_prefix}-${var.os_version}-${var.image_type}"
   guest_os_type        = "windows2019srvNext_64Guest"
   CPUs                 = var.CPUs
   cpu_cores            = var.cpu_cores
@@ -189,7 +193,7 @@ source "vsphere-iso" "windows-server-2022-standard-gui" {
   folder              = var.folder
 
   # Hardware Configuration
-  vm_name              = "${var.vm_name}-${var.os_version}-${var.image_type}"
+  vm_name              = "${var.vm_name_prefix}-${var.os_version}-${var.image_type}"
   guest_os_type        = "windows2019srvNext_64Guest"
   CPUs                 = var.CPUs
   cpu_cores            = var.cpu_cores
@@ -251,7 +255,7 @@ source "vsphere-iso" "windows-server-2022-datacenter-core" {
   folder              = var.folder
 
   # Hardware Configuration
-  vm_name              = "${var.vm_name}-${var.os_version}-${var.image_type}"
+  vm_name              = "${var.vm_name_prefix}-${var.os_version}-${var.image_type}"
   guest_os_type        = "windows2019srvNext_64Guest"
   CPUs                 = var.CPUs
   cpu_cores            = var.cpu_cores
@@ -313,7 +317,7 @@ source "vsphere-iso" "windows-server-2022-datacenter-gui" {
   folder              = var.folder
 
   # Hardware Configuration
-  vm_name              = "${var.vm_name}-${var.os_version}-${var.image_type}"
+  vm_name              = "${var.vm_name_prefix}-${var.os_version}-${var.image_type}"
   guest_os_type        = "windows2019srvNext_64Guest"
   CPUs                 = var.CPUs
   cpu_cores            = var.cpu_cores
@@ -343,7 +347,7 @@ source "vsphere-iso" "windows-server-2022-datacenter-gui" {
   }
 
   # CD Configuration
-  iso_paths    = ["[vsanDatastore] ISO/SERVER_EVAL_x64FRE_en-us.iso", "[] /vmimages/tools-isoimages/windows.iso"]
+  iso_paths    = ["[${var.datastore}] ${var.iso_path}", "[] /vmimages/tools-isoimages/windows.iso"]
   remove_cdrom = true
 
   # Communicator Configuration
