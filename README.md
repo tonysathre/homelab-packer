@@ -2,9 +2,9 @@
 Automation for my homelab
 
 
-## Packer Templates for VMware
+## Packer Templates for VMware vSphere
 
-## Build VMware Template
+### Build VMware vSphere Template
 
 ```powershell
 build.ps1 [-OSFamily] <string> [-Build] <string> [-OSVersion] <string> [-Force]
