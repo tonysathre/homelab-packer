@@ -39,5 +39,5 @@ if ($LASTEXITCODE -eq 0) {
         -var "os_version=$OSVersion" `
         -var "image_index=$ImageIndex" `
         -var-file "$PSScriptRoot\packer\windows\server\$OSVersion\secrets.pkr.hcl" `
-        "$PSScriptRoot\packer\windows\server\$OSVersion\windows-server.pkr.hcl" `
+        "$PSScriptRoot\packer\windows\server\$OSVersion\windows-server.pkr.hcl"
 }
