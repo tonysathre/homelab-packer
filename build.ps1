@@ -27,8 +27,7 @@ packer validate `
     -var "image_type=$Build" `
     -var "os_version=$OSVersion" `
     -var "image_index=$ImageIndex" `
-    -var-file "$PSScriptRoot\packer\windows\server\$OSVersion\secrets.pkr.hcl" `
-    "$PSScriptRoot\packer\windows\server\$OSVersion\windows-server.pkr.hcl"
+    "$PSScriptRoot\packer\windows\server\$OSVersion\"
 
 if ($LASTEXITCODE -eq 0) {
     packer build `
@@ -38,6 +37,5 @@ if ($LASTEXITCODE -eq 0) {
         -var "image_type=$Build" `
         -var "os_version=$OSVersion" `
         -var "image_index=$ImageIndex" `
-        -var-file "$PSScriptRoot\packer\windows\server\$OSVersion\secrets.pkr.hcl" `
-        "$PSScriptRoot\packer\windows\server\$OSVersion\windows-server.pkr.hcl"
+        "$PSScriptRoot\packer\windows\server\$OSVersion\"
 }
