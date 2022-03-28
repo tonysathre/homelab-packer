@@ -7,5 +7,5 @@ crash.log
 # For built boxes
 *.box
 
-
-unifi-controller/ansible/inventory.ini
+# ansible inventory
+unifi-controller/ansible/hosts

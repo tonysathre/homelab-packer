@@ -1,0 +1,8 @@
+# Cache objects
+packer_cache/
+output-vmware-iso/
+
+# For built boxes
+*.box
+
+**/secrets.pkr.hcl
