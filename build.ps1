@@ -81,9 +81,9 @@ function Build-Windows {
         $PackerRoot
 
     if ($LASTEXITCODE -eq 0) {
-        packer build -force `
+        packer build $PackerAdditionalArgs -force `
             -timestamp-ui `
-            -only=vsphere-iso.$OSFamily-$OSVersion-$Build `
+            -only="vsphere-iso.$OSFamily-$OSVersion-$Build" `
             -var "image_type=$Build" `
             -var "os_version=$OSVersion" `
             -var "image_index=$ImageIndex" `
