@@ -11,6 +11,7 @@ locals {
     })
   }
   data_source_command = "ds=\"nocloud-net;seedfrom=http://{{.HTTPIP}}:{{.HTTPPort}}/\""
+  build_date = formatdate("YYYY-MM-DD hh:mm ZZZ", timestamp())
 }
 
 source "vsphere-iso" "linux-ubuntu-server" {
@@ -53,6 +54,7 @@ source "vsphere-iso" "linux-ubuntu-server" {
     network      = var.network
     network_card = "vmxnet3"
   }
+  notes = "Built by HashiCorp Packer on: ${local.build_date}"
 
   # CD Configuration
   iso_paths    = ["[${var.datastore}] ISO/ubuntu-20.04.4-live-server-amd64.iso", "[] /vmimages/tools-isoimages/linux.iso"]

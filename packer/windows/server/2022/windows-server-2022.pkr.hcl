@@ -9,6 +9,10 @@ packer {
   }
 }
 
+locals {
+  build_date = formatdate("YYYY-MM-DD hh:mm ZZZ", timestamp())
+}
+
 source "vsphere-iso" "windows-server-2022-standard-core" {
   # Boot Configuration
   boot_command = ["<spacebar>"]
@@ -40,6 +44,7 @@ source "vsphere-iso" "windows-server-2022-standard-core" {
     network      = var.network
     network_card = "vmxnet3"
   }
+  notes = "Built by HashiCorp Packer on: ${local.build_date}"
 
   # Floppy Configuration
   floppy_files = [
@@ -101,6 +106,7 @@ source "vsphere-iso" "windows-server-2022-standard-gui" {
     network      = var.network
     network_card = "vmxnet3"
   }
+  notes = "Built by HashiCorp Packer on: ${local.build_date}"
 
   # Floppy Configuration
   floppy_files = [
@@ -162,6 +168,7 @@ source "vsphere-iso" "windows-server-2022-datacenter-core" {
     network      = var.network
     network_card = "vmxnet3"
   }
+  notes = "Built by HashiCorp Packer on: ${local.build_date}"
 
   # Floppy Configuration
   floppy_files = [
@@ -223,6 +230,7 @@ source "vsphere-iso" "windows-server-2022-datacenter-gui" {
     network      = var.network
     network_card = "vmxnet3"
   }
+  notes = "Built by HashiCorp Packer on: ${local.build_date}"
 
   # Floppy Configuration
   floppy_files = [
