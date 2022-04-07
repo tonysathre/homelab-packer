@@ -65,14 +65,14 @@ source "vsphere-iso" "linux-ubuntu-server" {
   ssh_username = var.ssh_username
   ssh_password = var.ssh_password
 
+  # HTTP Configuration
+  http_ip        = var.http_ip
+  http_content   = local.data_source_content
+
   # Shutdown Configuration
   shutdown_timeout    = "15m"
   shutdown_command    = "sudo -E shutdown -P now"
   convert_to_template = true
-
-  # HTTP Configuration
-  http_ip        = var.http_ip
-  http_content   = local.data_source_content
 }
 
 build {
