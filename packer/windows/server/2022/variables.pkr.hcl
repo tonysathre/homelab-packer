@@ -85,7 +85,7 @@ variable "RAM" {
 
 variable "CPUs" {
   type    = string
-  default = "1"
+  default = "2"
 }
 
 variable "vm_name_prefix" {
