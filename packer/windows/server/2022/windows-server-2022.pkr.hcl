@@ -1,3 +1,5 @@
+# Windows Server 2022
+
 packer {
   required_plugins {
     windows-update = {
@@ -5,114 +7,6 @@ packer {
       source = "github.com/rgl/windows-update"
     }
   }
-}
-
-variable "image_type" {
-  type = string
-}
-
-variable "image_index" {
-  type = number
-}
-
-variable "os_version" {
-  type = string
-}
-
-variable "boot_wait" {
-  type    = string
-  default = "1s"
-}
-
-variable "insecure_connection" {
-    type    = bool
-    default = true
-}
-
-variable "vcenter_server" {
-  type = string
-}
-
-variable "vcenter_username" {
-  type      = string
-  sensitive = true
-}
-
-variable "vcenter_password" {
-  type      = string
-  sensitive = true
-}
-
-variable "winrm_username" {
-  type      = string
-  sensitive = true
-}
-
-variable "winrm_password" {
-  type      = string
-  sensitive = true
-}
-
-variable "local_admin_username" {
-  type      = string
-  sensitive = true
-}
-
-variable "local_admin_password" {
-  type      = string
-  sensitive = true
-}
-
-variable "datacenter" {
-    type = string
-}
-
-variable "cluster" {
-    type = string
-}
-
-variable "datastore" {
-    type = string
-}
-
-
-variable iso_path {
-  type = string
-}
-
-variable "disk_size" {
-  type    = string
-  default = "40960"
-}
-
-variable "RAM" {
-  type    = string
-  default = "4096"
-}
-
-variable "CPUs" {
-  type    = string
-  default = "1"
-}
-
-variable "cpu_cores" {
-  type    = string
-  default = "2"
-}
-
-variable "vm_name_prefix" {
-  type    = string
-  default = "win-server"
-}
-
-variable "network" {
-  type    = string
-  default = "VM Network"
-}
-
-variable "folder" {
-  type    = string
-  default = "Templates"
 }
 
 source "vsphere-iso" "windows-server-2022-standard-core" {
@@ -132,9 +26,9 @@ source "vsphere-iso" "windows-server-2022-standard-core" {
 
   # Hardware Configuration
   vm_name              = "${var.vm_name_prefix}-${var.os_version}-${var.image_type}"
-  guest_os_type        = "windows2019srvNext_64Guest"
+  guest_os_type        = "ubuntu64Guest"
   CPUs                 = var.CPUs
-  cpu_cores            = var.cpu_cores
+  cpu_cores            = var.CPUs
   RAM                  = var.RAM
   firmware             = "efi-secure"
   disk_controller_type = ["pvscsi"]
@@ -149,7 +43,7 @@ source "vsphere-iso" "windows-server-2022-standard-core" {
 
   # Floppy Configuration
   floppy_files = [
-    "${path.cwd}/scripts/"
+    "${path.cwd}/scripts/windows/"
   ]
   floppy_content = {
     "autounattend.xml" = templatefile("${abspath(path.root)}/data/autounattend.pkrtpl.hcl", {
@@ -196,7 +90,7 @@ source "vsphere-iso" "windows-server-2022-standard-gui" {
   vm_name              = "${var.vm_name_prefix}-${var.os_version}-${var.image_type}"
   guest_os_type        = "windows2019srvNext_64Guest"
   CPUs                 = var.CPUs
-  cpu_cores            = var.cpu_cores
+  cpu_cores            = var.CPUs
   RAM                  = var.RAM
   firmware             = "efi-secure"
   disk_controller_type = ["pvscsi"]
@@ -211,7 +105,7 @@ source "vsphere-iso" "windows-server-2022-standard-gui" {
 
   # Floppy Configuration
   floppy_files = [
-    "${path.cwd}/scripts/"
+    "${path.cwd}/scripts/windows"
   ]
   floppy_content = {
     "autounattend.xml" = templatefile("${abspath(path.root)}/data/autounattend.pkrtpl.hcl", {
@@ -258,7 +152,7 @@ source "vsphere-iso" "windows-server-2022-datacenter-core" {
   vm_name              = "${var.vm_name_prefix}-${var.os_version}-${var.image_type}"
   guest_os_type        = "windows2019srvNext_64Guest"
   CPUs                 = var.CPUs
-  cpu_cores            = var.cpu_cores
+  cpu_cores            = var.CPUs
   RAM                  = var.RAM
   firmware             = "efi-secure"
   disk_controller_type = ["pvscsi"]
@@ -273,7 +167,7 @@ source "vsphere-iso" "windows-server-2022-datacenter-core" {
 
   # Floppy Configuration
   floppy_files = [
-    "${path.cwd}/scripts/"
+    "${path.cwd}/scripts/windows/"
   ]
   floppy_content = {
     "autounattend.xml" = templatefile("${abspath(path.root)}/data/autounattend.pkrtpl.hcl", {
@@ -320,7 +214,7 @@ source "vsphere-iso" "windows-server-2022-datacenter-gui" {
   vm_name              = "${var.vm_name_prefix}-${var.os_version}-${var.image_type}"
   guest_os_type        = "windows2019srvNext_64Guest"
   CPUs                 = var.CPUs
-  cpu_cores            = var.cpu_cores
+  cpu_cores            = var.CPUs
   RAM                  = var.RAM
   firmware             = "efi-secure"
   disk_controller_type = ["pvscsi"]
@@ -335,7 +229,7 @@ source "vsphere-iso" "windows-server-2022-datacenter-gui" {
 
   # Floppy Configuration
   floppy_files = [
-    "${path.cwd}/scripts/"
+    "${path.cwd}/scripts/windows/"
   ]
   floppy_content = {
     "autounattend.xml" = templatefile("${abspath(path.root)}/data/autounattend.pkrtpl.hcl", {
@@ -385,6 +279,6 @@ build {
 
   provisioner "powershell" {
     pause_before = "30s"
-    scripts      = ["scripts/cleanup.ps1"]
+    scripts      = ["scripts/windows/cleanup.ps1"]
   }
 }
