@@ -47,7 +47,6 @@ source "vsphere-iso" "windows-server-2022-standard-core" {
   ]
   floppy_content = {
     "autounattend.xml" = templatefile("${abspath(path.root)}/data/autounattend.pkrtpl.hcl", {
-      winrm_password       = var.winrm_password
       image_index          = var.image_index
       local_admin_username = var.local_admin_username
       local_admin_password = var.local_admin_password
@@ -109,7 +108,6 @@ source "vsphere-iso" "windows-server-2022-standard-gui" {
   ]
   floppy_content = {
     "autounattend.xml" = templatefile("${abspath(path.root)}/data/autounattend.pkrtpl.hcl", {
-      winrm_password       = var.winrm_password
       image_index          = var.image_index
       local_admin_username = var.local_admin_username
       local_admin_password = var.local_admin_password
@@ -171,7 +169,6 @@ source "vsphere-iso" "windows-server-2022-datacenter-core" {
   ]
   floppy_content = {
     "autounattend.xml" = templatefile("${abspath(path.root)}/data/autounattend.pkrtpl.hcl", {
-      winrm_password       = var.winrm_password
       image_index          = var.image_index
       local_admin_username = var.local_admin_username
       local_admin_password = var.local_admin_password
@@ -233,7 +230,6 @@ source "vsphere-iso" "windows-server-2022-datacenter-gui" {
   ]
   floppy_content = {
     "autounattend.xml" = templatefile("${abspath(path.root)}/data/autounattend.pkrtpl.hcl", {
-      winrm_password       = var.winrm_password
       image_index          = var.image_index
       local_admin_username = var.local_admin_username
       local_admin_password = var.local_admin_password
