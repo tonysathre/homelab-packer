@@ -49,7 +49,7 @@ param (
     [string]$OSVersion,
 
     [Parameter()]
-    [string]$PackerAdditionalArgs
+    [string]$AdditionalArgs
 )
 
 function Build-Windows {
@@ -72,7 +72,7 @@ function Build-Windows {
         $PackerRoot
 
     if ($LASTEXITCODE -eq 0) {
-        packer build $PackerAdditionalArgs -force `
+        packer build $AdditionalArgs -force `
             -timestamp-ui `
             -only="vsphere-iso.$OSFamily-$OSVersion-$Build" `
             -var "image_type=$Build" `
@@ -89,7 +89,7 @@ function Build-Linux {
     packer validate $PackerRoot
 
     if ($LASTEXITCODE -eq 0) {
-        packer build $PackerAdditionalArgs -force -timestamp-ui $PackerRoot
+        packer build $AdditionalArgs -force -timestamp-ui $PackerRoot
     }
 }
 
