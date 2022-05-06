@@ -55,6 +55,7 @@ source "vsphere-iso" "windows-server-2022-standard-core" {
       image_index          = var.image_index
       local_admin_username = var.local_admin_username
       local_admin_password = var.local_admin_password
+      product_key          = var.product_key
     })
   }
 
@@ -117,6 +118,7 @@ source "vsphere-iso" "windows-server-2022-standard-gui" {
       image_index          = var.image_index
       local_admin_username = var.local_admin_username
       local_admin_password = var.local_admin_password
+      product_key          = var.product_key
     })
   }
 
@@ -179,6 +181,7 @@ source "vsphere-iso" "windows-server-2022-datacenter-core" {
       image_index          = var.image_index
       local_admin_username = var.local_admin_username
       local_admin_password = var.local_admin_password
+      product_key          = var.product_key
     })
   }
 
@@ -241,6 +244,7 @@ source "vsphere-iso" "windows-server-2022-datacenter-gui" {
       image_index          = var.image_index
       local_admin_username = var.local_admin_username
       local_admin_password = var.local_admin_password
+      product_key          = var.product_key
     })
   }
 

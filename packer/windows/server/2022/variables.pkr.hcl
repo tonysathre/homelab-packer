@@ -68,7 +68,6 @@ variable "datastore" {
     type = string
 }
 
-
 variable iso_path {
   type = string
 }
@@ -101,4 +100,8 @@ variable "network" {
 variable "folder" {
   type    = string
   default = "Templates"
+}
+
+variable "product_key" {
+  type = string
 }
