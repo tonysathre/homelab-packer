@@ -1,12 +1,9 @@
-# Automation for my homelab
+# Packer Templates for VMware vSphere
 
-
-## Packer Templates for VMware vSphere
-
-### Build VMware vSphere Template
+## Build Template
 
 ```powershell
-.\build.ps1 -Packer -OSFamily <string> -Build <string> -OSVersion <string> [-PackerAdditionalArgs <string>] [<CommonParameters>]
+.\build.ps1 -Packer -OSFamily <string> -Build <string> -OSVersion <string> [-AdditionalArgs <string>] [<CommonParameters>]
 ```
 
 ### Arguments
@@ -16,8 +13,8 @@
 | windows-server | standard-core, standard-gui, datacenter-core, datacenter-gui | 2022 |
 | linux-server | ubuntu | 20.04 |
 
-### Example
+### Examples
 ```powershell
 .\build.ps1 -Packer -OSFamily linux-server -Build ubuntu -OSVersion 20.04
-.\build.ps1 -Packer -OSFamily windows-server -Build standard-core -OSVersion 2022 -PackerAdditionalArgs '-on-error=ask'
+.\build.ps1 -Packer -OSFamily windows-server -Build standard-core -OSVersion 2022 -AdditionalArgs '-on-error=ask'
 ```
