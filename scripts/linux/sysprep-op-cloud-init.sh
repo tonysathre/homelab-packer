@@ -10,4 +10,11 @@ set -o errexit
 rm -rf /var/lib/cloud/*
 rm -f /var/log/cloud-init.log
 
+# https://kb.vmware.com/s/article/80934
+rm -rf /etc/cloud/cloud.cfg.d/subiquity-disable-cloudinit-networking.cfg
+rm -rf /etc/cloud/cloud.cfg.d/99-installer.cfg
+#sudo apt purge cloud-init -y
+#sudo apt autoremove -y
+#sudo rm -rf /etc/cloud
+#sudo sed -i 's/D /tmp/#D /tmp/g' /usr/lib/tmpfiles.d/tmp.conf
 exit 0
