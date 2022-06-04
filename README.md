@@ -15,6 +15,6 @@
 
 ### Examples
 ```powershell
-.\build.ps1 -Packer -OSFamily linux-server -Build ubuntu -OSVersion 20.04
-.\build.ps1 -Packer -OSFamily windows-server -Build standard-core -OSVersion 2022 -AdditionalArgs '-on-error=ask'
+.\build.ps1 -OSFamily linux-server -Build ubuntu -OSVersion 20.04
+.\build.ps1 -OSFamily windows-server -Build standard-core -OSVersion 2022 -AdditionalArgs '-on-error=ask'
 ```
