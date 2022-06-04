@@ -3,7 +3,7 @@
 ## Build Template
 
 ```powershell
-.\build.ps1 -Packer -OSFamily <string> -Build <string> -OSVersion <string> [-AdditionalArgs <string>] [<CommonParameters>]
+.\build.ps1 -OSFamily <string> -Build <string> -OSVersion <string> [-AdditionalArgs <string>] [<CommonParameters>]
 ```
 
 ### Arguments
